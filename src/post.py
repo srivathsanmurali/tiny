@@ -13,22 +13,20 @@ def loadPost(filename):
     post = frontmatter.load(f)
   return post
     
-def renderPost(mdFile):
+def renderPost(mdFile, htmlFile, htmlTemp):
     post = loadPost(mdFile)
     body = md.markdown(post.content)
     
-    outFile = "index.html"
-    inputFile = "input.html"
-
     env = Environment(loader=FileSystemLoader(''))
-    template = env.get_template("input.html")
+    template = env.get_template(htmlTemp)
 
     html = template.render(post=post, body=body)
-    with open (outFile, "wb") as fh:
+    with open (htmlFile, "wb") as fh:
         fh.write(bytes(html,'UTF-8'))
 
-renderPost('test.md')
-server.serveAtPort(8000)
+if __name__ == "__main__":
+    renderPost('test.md','index.html','input.html')
+    server.serveAtPort(8000)
 
             
                 
