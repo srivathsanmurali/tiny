@@ -1,0 +1,10 @@
+---
+# website meta #
+URL: vathsan.com
+Name: Srivathsan Murali
+email: sri@vathsan.com
+
+# directory names #
+content: ./content/
+output: ./_site/
+layouts: ./design/layout/
