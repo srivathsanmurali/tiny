@@ -10,6 +10,3 @@ def serveAtPort(PORT):
         httpd.serve_forever()
     except KeyboardInterrupt:
         print ("Server closed at port ", PORT)
-
-""" Testing at port 8000 """
-serveAtPort(8000)
