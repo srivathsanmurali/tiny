@@ -6,5 +6,5 @@ email: sri@vathsan.com
 
 # directory names #
 content: ./content/
-output: ./_site/
+output: ./_site
 layouts: ./design/layout/
