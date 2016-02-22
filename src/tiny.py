@@ -32,19 +32,31 @@ def main():
     os.makedirs(configData['output'])
 
   walkContents(configData['content'], configData)
-
+#  server.serveAtPort(8000)
 
 def walkContents(folderLoc, configData):
   #print ([ name for name in os.listdir(folderLoc) if os.path.isdir(os.path.join(folderLoc, name)) ])
   print("Folder ", os.path.relpath(folderLoc, configData['content']) )
   # chking if the build folder exists
   # if else create it
-  #if not os.path.exist(
+  outputfolder = os.path.join(configData['output'], 
+    os.path.relpath(folderLoc, configData['content']))
+
+  if not os.path.exists(outputfolder):
+    os.makedirs(outputfolder)
 
   # walks the directory and renders the html files
   for name in os.listdir(folderLoc):
     if not os.path.isdir(os.path.join(folderLoc,name)):
       print (name)
+      inputMd = os.path.join(folderLoc,name)
+      htmlfile = os.path.splitext(name)[0] + '.html'
+      outputHtml = outputfolder + '/' +  htmlfile
+      template = os.path.join(configData['layouts'],'input.html')
+      print("inputMd " , inputMd)
+      print("htmlfile ", htmlfile)
+      print("outputHtml ", outputHtml)
+      #post.renderPost(inputMd, outputHtml,template)
 
   for name in os.listdir(folderLoc):
     if os.path.isdir(os.path.join(folderLoc,name)):#

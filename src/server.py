@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from http.server import HTTPServer, CGIHTTPRequestHandler
+import sys
 
 def serveAtPort(PORT):
     try:
@@ -10,3 +11,4 @@ def serveAtPort(PORT):
         httpd.serve_forever()
     except KeyboardInterrupt:
         print ("Server closed at port ", PORT)
+        sys.exit(0)
